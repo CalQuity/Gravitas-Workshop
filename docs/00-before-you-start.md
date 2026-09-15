@@ -1,6 +1,6 @@
 # 0. Before you start
 
-Allow **60–90 minutes**, keep the laptop plugged in, and use a stable connection. The Python AI packages can download 2–4 GB; keep at least **8 GB free**.
+Allow **60–90 minutes**, keep the laptop plugged in, and use a stable connection. The Python AI packages can download 2–4 GB; keep at least **16 GB free**.
 
 ## Supported computers
 
