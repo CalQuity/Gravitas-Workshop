@@ -1,7 +1,7 @@
 from agno.tools import tool
 from agno.tools.yfinance import YFinanceTools
 from agno.models.openai import OpenAIChat
-from embedding import load_settings
+from agent_utils.knowledge import load_settings
 from agno.agent import Agent
 
 @tool(

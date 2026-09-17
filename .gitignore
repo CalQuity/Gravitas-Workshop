@@ -15,3 +15,4 @@ documents/*
 !documents/HCLTECH_Q1_FY27.pdf
 ingested/*
 !ingested/.gitkeep
+agent-ui/

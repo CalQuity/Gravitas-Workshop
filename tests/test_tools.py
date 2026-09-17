@@ -3,7 +3,7 @@ from __future__ import annotations
 import asyncio
 from datetime import datetime
 
-import tools
+from agent_utils import tools
 
 
 class FakeFrame:
