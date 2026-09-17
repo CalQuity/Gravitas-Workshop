@@ -31,22 +31,29 @@ def build_messages(question: str, context: str | None = None):
 
 
 @observe(name="workshop-llm-call")
-def call_model(messages, *, model=None, temperature=0.3):
-    """Send chat messages to the configured OpenRouter model and return its text."""
+def call_model(messages, *, model=None, temperature=0.3, response_format=None):
+    """Send chat messages to the configured OpenRouter model and return its text.
+
+    Pass response_format={'type': 'json_object'} to ask the model for JSON — this
+    plain JSON mode is far more widely supported across free/routed models than
+    strict `json_schema` mode, so it's what this workshop uses for structured output.
+    """
     load_workshop_env()
     model = model or os.getenv("OPENROUTER_MODEL", "openrouter/free")
+    kwargs = {"response_format": response_format} if response_format else {}
     response = client().chat.completions.create(
         name="openrouter-chat",
         model=model,
         messages=messages,
         temperature=temperature,
+        **kwargs,
     )
     return response.choices[0].message.content
 
 
 if __name__ == "__main__":
     load_workshop_env()
-    messages = build_messages("What was TCS FY25 revenue?")
+    messages = build_messages("What was TCS FY26 revenue?")
     print(messages)
     try:
         print(call_model(messages))
