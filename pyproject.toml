@@ -1,34 +1,40 @@
 [project]
-name = "gravitas-ai2-workshop"
+name = "gravitas-agno-student-rag"
 version = "0.1.0"
-description = "Day-of starter for AI²: Building AI Systems with AI"
+description = "A five-file Agno RAG project for university students"
 requires-python = ">=3.13,<3.15"
 dependencies = [
-  "agno>=2.9,<3",
-  "ddgs>=9.16,<10",
-  "fastapi>=0.141,<1",
-  "jupyterlab>=4.6,<5",
-  "langfuse>=4.15,<5",
+  "agno==3.0.9",
+  "aiohttp==3.13.3",
+  "daytona>=0.198.0",
+  "ddgs==9.16.0",
+  "fastapi==0.141.1",
+  "langfuse==4.15.4",
   "liteparse==2.14.4",
-  "openai>=3.13,<4",
-  "pandas>=3,<4",
-  "pinecone>=10,<11",
-  "pydantic>=2.12,<3",
-  "pytest>=9.1,<10",
-  "python-dotenv>=1.2,<2",
-  "rank-bm25==0.2.2",
-  "uvicorn[standard]>=0.52,<1",
-  "yfinance>=1.0,<2",
+  "openai==3.13.0",
+  "openinference-instrumentation-agno==1.0.10",
+  "pinecone==10.0.0",
+  "python-dotenv==1.2.3",
+  "python-multipart==0.0.32",
+  "requests==2.34.2",
+  "sqlalchemy==2.0.52",
+  "tavily-python>=0.8.3",
+  "uvicorn==0.52.4",
+  "yfinance==1.7.0",
 ]
 
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
-
-[tool.hatch.build.targets.wheel]
-include = [
-  "config.py",
-  "llm/**",
-  "retrieval/**",
-  "observability/**",
+[dependency-groups]
+dev = [
+  "ipykernel>=7.3.0",
+  "jupyterlab>=4.6.3",
+  "nbconvert>=7.17.0",
+  "nbformat>=5.11.1",
+  "pytest==9.1.1",
 ]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

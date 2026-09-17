@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Notebook 2: Instructions",
+    "locale": "en",
+    "quality_profile": "showcase",
+    "viewBox": [
+      1200,
+      740
+    ]
+  },
+  "components": [
+    {
+      "id": "question",
+      "type": "external",
+      "label": "Input",
+      "sublabel": "User question",
+      "pos": [
+        40,
+        300
+      ],
+      "size": [
+        200,
+        88
+      ]
+    },
+    {
+      "id": "model",
+      "type": "backend",
+      "label": "Model",
+      "sublabel": "OpenRouter LLM",
+      "pos": [
+        500,
+        300
+      ],
+      "size": [
+        230,
+        88
+      ]
+    },
+    {
+      "id": "answer",
+      "type": "external",
+      "label": "Output",
+      "sublabel": "Generated response",
+      "pos": [
+        960,
+        300
+      ],
+      "size": [
+        200,
+        88
+      ]
+    },
+    {
+      "id": "instructions",
+      "type": "security",
+      "label": "Instructions",
+      "sublabel": "Behavior and evidence rules",
+      "pos": [
+        300,
+        80
+      ],
+      "size": [
+        280,
+        88
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "input-model",
+      "from": "question",
+      "to": "model"
+    },
+    {
+      "id": "model-answer",
+      "from": "model",
+      "to": "answer"
+    },
+    {
+      "id": "instructions-model",
+      "from": "instructions",
+      "to": "model",
+      "label": "rules",
+      "fromSide": "bottom",
+      "toSide": "top"
+    }
+  ]
+}
