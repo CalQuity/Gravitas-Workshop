@@ -5,12 +5,12 @@ from agno.db.sqlite import SqliteDb
 from agno.guardrails import PIIDetectionGuardrail, PromptInjectionGuardrail
 from agno.models.openai import OpenAIChat
 from agno.os import AgentOS
-from subagent import invoke_technical_subagent
+from agent_utils.subagent import invoke_technical_subagent
 from agno.skills import LocalSkills, Skills
 from pathlib import Path
 from agno.tools.daytona import DaytonaTools
-from knowledge import PROJECT_ROOT, create_knowledge, load_settings
-from tools import create_tools
+from agent_utils.knowledge import PROJECT_ROOT, create_knowledge, load_settings
+from agent_utils.tools import create_tools
 from dotenv import load_dotenv
 import os
 load_dotenv()

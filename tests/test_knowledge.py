@@ -1,6 +1,6 @@
 import pytest
 
-import knowledge
+from agent_utils import knowledge
 
 
 def test_load_settings_reports_missing_keys(monkeypatch) -> None:

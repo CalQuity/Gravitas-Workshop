@@ -13,7 +13,7 @@ from agno.knowledge.knowledge import Knowledge
 from dotenv import load_dotenv
 
 
-PROJECT_ROOT = Path(__file__).parent
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 
 def _resolve_env_file() -> Path | None:
