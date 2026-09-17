@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Notebook 1: Vanilla agent",
+    "locale": "en",
+    "quality_profile": "showcase",
+    "viewBox": [1200, 500]
+  },
+  "components": [
+    {"id": "user-input", "type": "external", "label": "Input", "sublabel": "User question", "pos": [80, 200], "size": [220, 90]},
+    {"id": "chat-model", "type": "backend", "label": "Model", "sublabel": "OpenRouter LLM", "pos": [490, 200], "size": [220, 90]},
+    {"id": "model-output", "type": "external", "label": "Output", "sublabel": "Generated response", "pos": [900, 200], "size": [220, 90]}
+  ],
+  "connections": [
+    {"id": "input-to-model", "from": "user-input", "to": "chat-model"},
+    {"id": "model-to-output", "from": "chat-model", "to": "model-output"}
+  ]
+}

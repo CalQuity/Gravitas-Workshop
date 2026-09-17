@@ -1,0 +1,79 @@
+[
+  {
+    "step": 1,
+    "diagram_type": "architecture",
+    "output": "01-vanilla.html",
+    "specification_sha256": "680943519d4711e07aec0be5f179848d21fb1c3249563ea0c30be2c9ddcb9f4c",
+    "artifact_sha256": "29de9b9e359dde62c72513f34072538e08470e29ac22299ab902ef528c474ad6",
+    "validation": "9/9 showcase, 0 errors, 0 warnings",
+    "browser_evidence": "passed",
+    "visual_review": "passed",
+    "correction_rounds": 0
+  },
+  {
+    "step": 2,
+    "diagram_type": "architecture",
+    "output": "02-instructions.html",
+    "specification_sha256": "5d8d1ef8947a1b07d2654b57221d7c755df92d729d7574e1678adb36c03b13fb",
+    "artifact_sha256": "be6d8b99c6160c36e94e4350246a7b9a072c22bc1f8bd9caa8d7a01b51844eee",
+    "validation": "9/9 showcase, 0 errors, 0 warnings",
+    "browser_evidence": "passed",
+    "visual_review": "passed",
+    "correction_rounds": 0
+  },
+  {
+    "step": 3,
+    "diagram_type": "architecture",
+    "output": "03-knowledge.html",
+    "specification_sha256": "4c9e91c0bef2c50393ce151050d72bc022f96542861a178111c2d86938687502",
+    "artifact_sha256": "5a393aad11ac16066f6dfb432aa9662438803df614306fe829532d61f2b8a557",
+    "validation": "9/9 showcase, 0 errors, 0 warnings",
+    "browser_evidence": "passed",
+    "visual_review": "passed",
+    "correction_rounds": 0
+  },
+  {
+    "step": 4,
+    "diagram_type": "architecture",
+    "output": "04-sessions.html",
+    "specification_sha256": "cdb46e90fd95727ec0328ec6d5c76c3b42c62a704676ec21a4b0b88c797073ae",
+    "artifact_sha256": "fe60033e5cf0236f673e6b97832a69f576bcac277c4e05656a186d7bcfbde9c6",
+    "validation": "9/9 showcase, 0 errors, 0 warnings",
+    "browser_evidence": "passed",
+    "visual_review": "passed",
+    "correction_rounds": 0
+  },
+  {
+    "step": 5,
+    "diagram_type": "architecture",
+    "output": "05-tools.html",
+    "specification_sha256": "fe84a431ec0da7311b755fe685dfd3e8d6f08fe3a5c98d154c44aa85538444e6",
+    "artifact_sha256": "2683840cc5f7152c21f5d0311be056ada1e57b71cd5771aedcd119aad9792bdb",
+    "validation": "9/9 showcase, 0 errors, 0 warnings",
+    "browser_evidence": "passed",
+    "visual_review": "passed",
+    "correction_rounds": 0
+  },
+  {
+    "step": 6,
+    "diagram_type": "architecture",
+    "output": "06-guardrails.html",
+    "specification_sha256": "d05aaa22d110f1d3a45c47ff864e49f5a99b96599e1812c9d876026b357a619a",
+    "artifact_sha256": "025271963b8716d095da024a9498597d1af4511e9c9a5ab1a00d13d874fe414e",
+    "validation": "9/9 showcase, 0 errors, 0 warnings",
+    "browser_evidence": "passed",
+    "visual_review": "passed",
+    "correction_rounds": 1
+  },
+  {
+    "step": 7,
+    "diagram_type": "architecture",
+    "output": "07-full-agent.html",
+    "specification_sha256": "b374a3ffbfe09583894435eea616dd2316626fefe2f1d9b5599cacf2f00332da",
+    "artifact_sha256": "d03ecc3f69df9b53fbc54b39905414aa713758b99ae871ce76ef058214cbcdac",
+    "validation": "9/9 showcase, 0 errors, 0 warnings",
+    "browser_evidence": "passed",
+    "visual_review": "passed",
+    "correction_rounds": 1
+  }
+]

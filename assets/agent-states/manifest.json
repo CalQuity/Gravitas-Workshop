@@ -1,0 +1,37 @@
+[
+  {
+    "step": 1,
+    "filename": "01-vanilla.architecture.json",
+    "title": "Vanilla agent"
+  },
+  {
+    "step": 2,
+    "filename": "02-instructions.architecture.json",
+    "title": "Instructions"
+  },
+  {
+    "step": 3,
+    "filename": "03-knowledge.architecture.json",
+    "title": "Knowledge"
+  },
+  {
+    "step": 4,
+    "filename": "04-sessions.architecture.json",
+    "title": "Session history"
+  },
+  {
+    "step": 5,
+    "filename": "05-tools.architecture.json",
+    "title": "Tools"
+  },
+  {
+    "step": 6,
+    "filename": "06-guardrails.architecture.json",
+    "title": "Guardrails"
+  },
+  {
+    "step": 7,
+    "filename": "07-full-agent.architecture.json",
+    "title": "Complete agent"
+  }
+]

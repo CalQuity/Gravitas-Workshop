@@ -1,6 +1,17 @@
 .env
 .venv/
 __pycache__/
+.pytest_cache/
 .ipynb_checkpoints/
+*.pyc
+*.db
+*.db-shm
+*.db-wal
+
 data/documents/
 data/processed/
+documents/*
+!documents/.gitkeep
+!documents/HCLTECH_Q1_FY27.pdf
+ingested/*
+!ingested/.gitkeep

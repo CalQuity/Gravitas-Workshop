@@ -1,0 +1,217 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Notebook 7: Complete agent",
+    "locale": "en",
+    "quality_profile": "showcase",
+    "viewBox": [
+      1200,
+      740
+    ]
+  },
+  "components": [
+    {
+      "id": "question",
+      "type": "external",
+      "label": "Input",
+      "sublabel": "User question",
+      "pos": [
+        40,
+        300
+      ],
+      "size": [
+        150,
+        88
+      ]
+    },
+    {
+      "id": "model",
+      "type": "backend",
+      "label": "Model",
+      "sublabel": "OpenRouter LLM",
+      "pos": [
+        500,
+        300
+      ],
+      "size": [
+        230,
+        88
+      ]
+    },
+    {
+      "id": "answer",
+      "type": "external",
+      "label": "Output",
+      "sublabel": "Evidence-based response",
+      "pos": [
+        960,
+        300
+      ],
+      "size": [
+        200,
+        88
+      ]
+    },
+    {
+      "id": "instructions",
+      "type": "security",
+      "label": "Instructions",
+      "sublabel": "Behavior and evidence rules",
+      "pos": [
+        300,
+        80
+      ],
+      "size": [
+        280,
+        88
+      ]
+    },
+    {
+      "id": "knowledge",
+      "type": "database",
+      "label": "Pinecone knowledge",
+      "sublabel": "llama-text-embed-v2",
+      "pos": [
+        760,
+        80
+      ],
+      "size": [
+        300,
+        88
+      ]
+    },
+    {
+      "id": "history",
+      "type": "database",
+      "label": "SQLite session history",
+      "sublabel": "Same session_id, recent turns",
+      "pos": [
+        300,
+        520
+      ],
+      "size": [
+        310,
+        88
+      ]
+    },
+    {
+      "id": "tools",
+      "type": "backend",
+      "label": "Tools",
+      "sublabel": "Tavily search and yfinance OHLCV",
+      "pos": [
+        760,
+        520
+      ],
+      "size": [
+        360,
+        88
+      ]
+    },
+    {
+      "id": "checks",
+      "type": "security",
+      "label": "Input guardrails",
+      "sublabel": "PII mask, injection check",
+      "pos": [
+        260,
+        300
+      ],
+      "size": [
+        210,
+        88
+      ]
+    },
+    {
+      "id": "blocked",
+      "type": "security",
+      "label": "Blocked request",
+      "sublabel": "No model call",
+      "pos": [
+        40,
+        520
+      ],
+      "size": [
+        210,
+        88
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "input-checks",
+      "from": "question",
+      "to": "checks"
+    },
+    {
+      "id": "model-answer",
+      "from": "model",
+      "to": "answer"
+    },
+    {
+      "id": "instructions-model",
+      "from": "instructions",
+      "to": "model",
+      "label": "rules",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "query-knowledge",
+      "from": "model",
+      "to": "knowledge",
+      "label": "search query",
+      "fromSide": "top",
+      "toSide": "left"
+    },
+    {
+      "id": "evidence-model",
+      "from": "knowledge",
+      "to": "model",
+      "label": "retrieved chunks",
+      "fromSide": "bottom",
+      "toSide": "right"
+    },
+    {
+      "id": "load-history",
+      "from": "history",
+      "to": "model",
+      "label": "recent history",
+      "fromSide": "top",
+      "toSide": "bottom"
+    },
+    {
+      "id": "tool-request",
+      "from": "model",
+      "to": "tools",
+      "label": "tool request",
+      "fromSide": "bottom",
+      "toSide": "left"
+    },
+    {
+      "id": "tool-result",
+      "from": "tools",
+      "to": "model",
+      "label": "result or error",
+      "fromSide": "top",
+      "toSide": "right"
+    },
+    {
+      "id": "checks-model",
+      "from": "checks",
+      "to": "model",
+      "label": "allowed input",
+      "labelDy": 68
+    },
+    {
+      "id": "checks-block",
+      "from": "checks",
+      "to": "blocked",
+      "label": "reject",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "variant": "security"
+    }
+  ]
+}

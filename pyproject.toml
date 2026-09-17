@@ -4,19 +4,26 @@ version = "0.1.0"
 description = "Day-of starter for AI²: Building AI Systems with AI"
 requires-python = ">=3.13,<3.15"
 dependencies = [
-  "agno>=2.9,<3",
+  "agno>=2.9,<4",
+  "aiohttp==3.13.3",
+  "daytona>=0.198.0",
   "ddgs>=9.16,<10",
   "fastapi>=0.141,<1",
   "jupyterlab>=4.6,<5",
   "langfuse>=4.15,<5",
   "liteparse==2.14.4",
   "openai>=3.13,<4",
+  "openinference-instrumentation-agno==1.0.10",
   "pandas>=3,<4",
   "pinecone>=10,<11",
   "pydantic>=2.12,<3",
   "pytest>=9.1,<10",
   "python-dotenv>=1.2,<2",
+  "python-multipart==0.0.32",
   "rank-bm25==0.2.2",
+  "requests==2.34.2",
+  "sqlalchemy==2.0.52",
+  "tavily-python>=0.8.3",
   "uvicorn[standard]>=0.52,<1",
   "yfinance>=1.0,<2",
 ]
@@ -32,3 +39,7 @@ include = [
   "retrieval/**",
   "observability/**",
 ]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
