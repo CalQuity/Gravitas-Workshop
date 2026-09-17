@@ -902,11 +902,7 @@ requires-dist = [
     { name = "pytest", specifier = ">=9.1,<10" },
     { name = "python-dotenv", specifier = ">=1.2,<2" },
     { name = "python-multipart", specifier = "==0.0.32" },
-<<<<<<< HEAD
-    { name = "rank-bm25", specifier = "==0.2.2" },
-=======
     { name = "rank-bm25", specifier = ">=0.2.2" },
->>>>>>> 5b15636 (Chore: Unified, cleaned the files)
     { name = "requests", specifier = "==2.34.2" },
     { name = "sqlalchemy", specifier = "==2.0.52" },
     { name = "tavily-python", specifier = ">=0.8.3" },
