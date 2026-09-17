@@ -4,7 +4,7 @@ The workshop Python code reads service credentials from one local `.env` file. T
 
 ## A. Copy the template
 
-Run this from the `Gravitas_Prework_Setup` folder.
+Run this from the repo root.
 
 ### Windows PowerShell
 

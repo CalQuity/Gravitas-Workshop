@@ -7,12 +7,16 @@
   },
   "permission": {
     "read": {
-      ".env": "deny"
+      ".env": "deny",
+      "../*": "deny",
+      "*": "allow"
     },
     "edit": {
+      "student_work/**": "allow",
       "*": "deny"
     },
     "bash": {
+      "git push": "deny",
       "*": "ask"
     }
   }

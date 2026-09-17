@@ -1,6 +1,6 @@
 # 9. Final workshop-readiness check
 
-Run this from `Gravitas_Prework_Setup` after completing every guide:
+Run this from the repo root after completing every guide:
 
 ```bash
 uv run python scripts/check_setup.py --imports
@@ -38,27 +38,17 @@ A ready setup checker ends with `Workshop setup is ready.`
 - [ ] OpenRouter, Pinecone, and Langfuse credentials are in `.env`.
 - [ ] `gravitas-prework-check` is visible in the Langfuse dashboard.
 - [ ] `.gitignore` contains `.env`.
-- [ ] You kept the whole `Gravitas_Prework_Setup` folder.
 
-## Workshop-morning folder layout
+## Workshop day
 
-When the Starter Kit is released, extract it **next to** this setup folder:
-
-```text
-Gravitas_AI2/
-├── Gravitas_Prework_Setup/
-│   └── .env
-└── Gravitas_Workshop_Starter/
-```
-
-Then from the Starter folder run:
+Pre-work and the workshop-day notebook live in this same repo, so there is nothing else to fetch or extract. From the repo root, run:
 
 ```bash
 uv sync --frozen
 uv run jupyter lab
 ```
 
-The Starter Kit automatically finds the `.env` in the sibling setup folder.
+Then open `notebooks/AI2_Gravitas_Workshop.ipynb`. It automatically finds the `.env` you created here during pre-work.
 
 ## If anything fails
 

@@ -2,7 +2,7 @@
 
 We use **skills** to give OpenCode reusable, task-specific procedures. Install them during pre-work so workshop time is spent building rather than downloading extensions.
 
-Install them **globally for OpenCode**. That makes the same skills available when you open the separate Starter Kit on workshop morning.
+Install them **globally for OpenCode**. That makes the same skills available in this repo on workshop morning too.
 
 > These commands download public repositories. Run them from a normal terminal, not from inside the Python notebook.
 
