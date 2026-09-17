@@ -1,6 +1,6 @@
 import pytest
 
-import embedding
+import knowledge
 
 
 def test_load_settings_reports_missing_keys(monkeypatch) -> None:
@@ -8,7 +8,7 @@ def test_load_settings_reports_missing_keys(monkeypatch) -> None:
         monkeypatch.delenv(name, raising=False)
 
     with pytest.raises(ValueError, match="OPENROUTER_API_KEY.*PINECONE_API_KEY"):
-        embedding.load_settings(load_file=False)
+        knowledge.load_settings(load_file=False)
 
 
 def test_load_settings_can_use_a_shared_env_file(monkeypatch, tmp_path) -> None:
@@ -22,7 +22,7 @@ def test_load_settings_can_use_a_shared_env_file(monkeypatch, tmp_path) -> None:
     for name in ("OPENROUTER_API_KEY", "PINECONE_API_KEY", "PINECONE_INDEX"):
         monkeypatch.delenv(name, raising=False)
 
-    settings = embedding.load_settings()
+    settings = knowledge.load_settings()
 
     assert settings["openrouter_api_key"] == "openrouter-shared"
     assert settings["pinecone_index"] == "gravitas-finresearch"
@@ -42,8 +42,8 @@ def test_create_knowledge_uses_pinecone_hosted_embeddings(monkeypatch) -> None:
         def exists(self):
             return True
 
-    monkeypatch.setattr(embedding, "PineconeHostedDb", FakePineconeHostedDb)
-    knowledge = embedding.create_knowledge(
+    monkeypatch.setattr(knowledge, "PineconeHostedDb", FakePineconeHostedDb)
+    knowledge_obj = knowledge.create_knowledge(
         {
             "openrouter_api_key": "openrouter-test",
             "openrouter_model": "openrouter/free",
@@ -56,7 +56,7 @@ def test_create_knowledge_uses_pinecone_hosted_embeddings(monkeypatch) -> None:
         validate_index=True,
     )
 
-    assert knowledge.vector_db is not None
+    assert knowledge_obj.vector_db is not None
     assert captured == {
         "api_key": "pinecone-test",
         "index_name": "gravitas-finresearch",

@@ -9,7 +9,7 @@ from subagent import invoke_technical_subagent
 from agno.skills import LocalSkills, Skills
 from pathlib import Path
 from agno.tools.daytona import DaytonaTools
-from embedding import PROJECT_ROOT, create_knowledge, load_settings
+from knowledge import PROJECT_ROOT, create_knowledge, load_settings
 from tools import create_tools
 from dotenv import load_dotenv
 import os
