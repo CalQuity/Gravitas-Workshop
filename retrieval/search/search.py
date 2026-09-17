@@ -8,7 +8,7 @@ from pinecone import Pinecone
 from rank_bm25 import BM25Okapi
 
 from config import load_workshop_env
-from retrieval.corpus import load_corpus
+from retrieval.ingestion.corpus import load_corpus
 
 
 def _tok(s):
@@ -54,3 +54,24 @@ def pinecone_search(query: str, top_k: int = 8, *, filter: dict | None = None):
         item["retriever"] = "dense"
         out.append(item)
     return out
+
+
+if __name__ == '__main__':
+    load_workshop_env()
+    sample_query = 'What FY26 revenue growth guidance did Infosys give?'
+    try:
+        keyword_hits = keyword_search(sample_query, top_k=3)
+        print(f'Keyword search: {len(keyword_hits)} hits')
+        for h in keyword_hits:
+            print('-', h['source_id'], h['text'][:100].replace('\n', ' '))
+    except FileNotFoundError:
+        print('Keyword search needs a processed corpus first — see retrieval/ingestion/corpus.py.')
+
+    try:
+        dense_hits = pinecone_search(sample_query, top_k=3)
+        print(f'\nPinecone search: {len(dense_hits)} hits')
+        for h in dense_hits:
+            print('-', h['source_id'], h['text'][:100].replace('\n', ' '))
+    except Exception as exc:
+        print(f'\nPinecone search not available yet ({exc}). '
+              'Run `uv run python -m retrieval.ingestion.index_corpus` first and confirm PINECONE_API_KEY is set.')

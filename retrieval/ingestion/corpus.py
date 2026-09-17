@@ -1,9 +1,9 @@
 from pathlib import Path
 import json
 from langfuse import observe
-from retrieval.parsing import parse_pdf_pages
-from retrieval.chunking import chunk_pages
-ROOT=Path(__file__).resolve().parents[1]
+from retrieval.ingestion.parsing import parse_pdf_pages
+from retrieval.ingestion.chunking import chunk_pages
+ROOT=Path(__file__).resolve().parents[2]
 MANIFEST=ROOT/'data/corpus_manifest.json'
 DOCS=ROOT/'data/documents'
 PROCESSED=ROOT/'data/processed/chunks.jsonl'
@@ -14,7 +14,7 @@ def build_corpus(*, chunk_size=1200, overlap=120):
     records=[]
     for item in load_manifest():
         path=DOCS/item['filename']
-        if not path.exists(): raise FileNotFoundError(f"Missing {path.name}. Run scripts/fetch_corpus.py first.")
+        if not path.exists(): raise FileNotFoundError(f"Missing {path.name}. Run scripts/fetch_documents.py first.")
         pages=parse_pdf_pages(path)
         chunks=chunk_pages(pages,chunk_size=chunk_size,overlap=overlap)
         for c in chunks:
@@ -34,3 +34,13 @@ def read_source(source_id:str):
     for r in load_corpus():
         if r['source_id']==source_id: return r
     return None
+
+
+if __name__ == '__main__':
+    try:
+        rows = load_corpus()
+        print(f'Processed corpus present: {len(rows)} chunks')
+        print('Example:', {k: rows[0][k] for k in ['source_id','company','period','doc_type','page']})
+    except FileNotFoundError:
+        print('No processed corpus yet. Run scripts/fetch_documents.py, then build_corpus() '
+              '(see 03_indexing_and_rag.ipynb, Mission 6).')

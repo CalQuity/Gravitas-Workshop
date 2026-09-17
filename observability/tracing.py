@@ -30,3 +30,8 @@ def flush_langfuse() -> None:
 def dashboard_base_url() -> str:
     load_workshop_env()
     return os.getenv("LANGFUSE_BASE_URL", "https://cloud.langfuse.com").rstrip("/")
+
+
+if __name__ == "__main__":
+    print("Langfuse configured:", langfuse_configured())
+    print("Dashboard base URL:", dashboard_base_url())

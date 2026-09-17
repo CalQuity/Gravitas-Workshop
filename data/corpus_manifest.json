@@ -1,27 +1,11 @@
 [
   {
-    "id": "tcs-ar-fy25",
-    "company": "TCS",
-    "period": "FY25",
-    "doc_type": "annual_report",
-    "filename": "TCS_Annual_Report_FY25.pdf",
-    "url": "https://www.tcs.com/content/dam/tcs/investor-relations/financial-statements/2024-25/ar/annual-report-2024-2025.pdf"
-  },
-  {
     "id": "tcs-q4-fy25-call",
     "company": "TCS",
     "period": "Q4 FY25",
     "doc_type": "earnings_call",
     "filename": "TCS_Q4_FY25_Earnings_Call.pdf",
-    "url": "https://www.tcs.com/content/dam/tcs/investor-relations/financial-statements/2024-25/q4/Management%20Commentary/Transcript%20of%20the%20Q4%202024-25%20Earnings%20Conference%20Call%20held%20at%201900%20hrs%20IST%20on%20Apr%2010%2C%202025.pdf"
-  },
-  {
-    "id": "infy-ar-fy25",
-    "company": "Infosys",
-    "period": "FY25",
-    "doc_type": "annual_report",
-    "filename": "Infosys_Annual_Report_FY25.pdf",
-    "url": "https://www.infosys.com/investors/reports-filings/annual-report/annual/documents/infosys-ar-25.pdf"
+    "url": "https://calquity-pdf-upload.s3.ap-south-1.amazonaws.com/global-search/724dba91-7986-4989-bbff-67cfaa4d3cde/lite_TCS_EC_Q4_FY2024-25_19458_1782935186122956000.pdf"
   },
   {
     "id": "infy-q4-fy25-release",
@@ -29,7 +13,7 @@
     "period": "Q4 FY25",
     "doc_type": "quarterly_release",
     "filename": "Infosys_Q4_FY25_Press_Release.pdf",
-    "url": "https://www.infosys.com/investors/reports-filings/quarterly-results/2024-2025/q4/documents/ifrs-usd-press-release.pdf"
+    "url": "https://calquity-pdf-upload.s3.ap-south-1.amazonaws.com/global-search/77499b18-d0d3-4dbc-a144-c33dd2d68b95/revisions/f572c75144e5e94d236a07338241d1df8a1a0fd4bb2586bd4648ccaa16cf0874.pdf"
   },
   {
     "id": "infy-q4-fy25-call",
@@ -37,15 +21,7 @@
     "period": "Q4 FY25",
     "doc_type": "earnings_call",
     "filename": "Infosys_Q4_FY25_Earnings_Call.pdf",
-    "url": "https://www.infosys.com/investors/reports-filings/quarterly-results/2024-2025/q4/documents/transcripts/earningscall.pdf"
-  },
-  {
-    "id": "hcl-ar-fy25",
-    "company": "HCLTech",
-    "period": "FY25",
-    "doc_type": "annual_report",
-    "filename": "HCLTech_Annual_Report_FY25.pdf",
-    "url": "https://www.hcltech.com/sites/default/files/document/open/annual-report/2025-08/Annual-Report-2024-25.pdf"
+    "url": "https://calquity-pdf-upload.s3.ap-south-1.amazonaws.com/global-search/10dbce32-0a48-44eb-b1a0-60929781e918/lite_INFY_EC_Q4_FY2024-25_9505_1782862242347159000.pdf"
   },
   {
     "id": "hcl-q4-fy25-release",
@@ -53,7 +29,7 @@
     "period": "Q4 FY25",
     "doc_type": "investor_release",
     "filename": "HCLTech_Q4_FY25_Investor_Release.pdf",
-    "url": "https://www.hcltech.com/sites/default/files/documents/investor-reports/HCLTech-Q4-FY25-Investor-Release.pdf"
+    "url": "https://calquity-pdf-upload.s3.ap-south-1.amazonaws.com/global-search/865dc93a-b97a-4215-a812-2501f56df772/HCLTECH_QR_Q4_FY2024-25.pdf"
   },
   {
     "id": "hcl-q4-fy25-call",
@@ -61,6 +37,6 @@
     "period": "Q4 FY25",
     "doc_type": "earnings_call",
     "filename": "HCLTech_Q4_FY25_Earnings_Call.pdf",
-    "url": "https://www.hcltech.com/sites/default/files/document/open/quarter-results/2025-04/HCLTech-Earnings-Q4FY25-Transcript.pdf"
+    "url": "https://calquity-pdf-upload.s3.ap-south-1.amazonaws.com/global-search/bceae88e-adfc-4e97-b6d6-248c452ced6c/HCLTECH_EC_Q4_FY2024-25.pdf"
   }
 ]

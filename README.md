@@ -1,7 +1,5 @@
 # AI²: Building AI Systems with AI — Workshop
 
-This single repo now holds both the **pre-work setup kit** and the **workshop-day starter**. (They used to be two separate folders you kept side by side; that was confusing, so everything lives here now.)
-
 ## 1. Pre-work (do this 2–3 days before the workshop)
 
 Follow the numbered guides in `docs/`, in order, starting with `docs/00-before-you-start.md` and including **`docs/03b-workshop-skills.md`**. By the end you should have:
@@ -36,18 +34,24 @@ uv sync --frozen
 uv run jupyter lab
 ```
 
-Open **`notebooks/AI2_Gravitas_Workshop.ipynb`** and follow it from top to bottom. The notebook is the **main teaching + build surface**: it explains each concept in short form, reuses the key workshop diagrams where useful, asks you to predict outcomes, gives you small **YOUR TURN** stubs, and then asks you to inspect what changed. The slides support the notebook; you should not need to keep switching back to the deck to understand a concept.
+Open **`notebooks/01_llm_foundations.ipynb`** and work through the series in order — it's split into four notebooks so each session stays focused:
+
+1. `01_llm_foundations.ipynb` — a plain LLM, its failure modes, temperature, structured outputs
+2. `02_evidence_layer.ipynb` — provenance, parsing, chunking
+3. `03_indexing_and_rag.ipynb` — vector indexing and a first RAG loop
+4. `04_hybrid_retrieval.ipynb` — combining dense + keyword search
+
+Each notebook is the **main teaching + build surface** for its section: it explains each concept in short form, reuses the key workshop diagrams where useful, asks you to predict outcomes, gives you small **YOUR TURN** stubs (numbered in order within each notebook), points to the underlying `.py` files with **📎 Script reference** notes, and then asks you to inspect what changed. The slides support the notebooks; you should not need to keep switching back to the deck to understand a concept.
 
 The intended rhythm is **read → predict → fill a small stub → run → inspect → explain**. Most student edits are intentionally 2–8 minute tasks rather than large blank coding exercises.
 
-### You edit four learning surfaces
+### You edit these learning surfaces
 
-- `notebooks/AI2_Gravitas_Workshop.ipynb` — cells marked **YOUR TURN** (edit these manually in Jupyter);
-- `student_work/indexing.py` — preserve text + provenance in the vector record;
-- `student_work/retrieval.py` — implement RRF; and
-- `student_work/agent.py` — assemble the research agent.
+Every exercise is a cell marked **YOUR TURN** inside `notebooks/01_llm_foundations.ipynb` through `04_hybrid_retrieval.ipynb` — edit these manually in Jupyter, in order. That includes Mission 7's indexing-record exercise and Mission 9's RRF exercise: write your own version in the notebook and check it against the sample data there. (The real pipeline uses its own working implementation of each — in `retrieval/ingestion/index_corpus.py` and `retrieval/search/fusion.py` — so Mission 8/9 still work end-to-end regardless of how your notebook version turns out.)
 
-OpenCode can explain any file, but its project permissions intentionally allow edits only in the `student_work/` files. This prevents an AI coding assistant from rewriting tests or workshop infrastructure behind your back.
+OpenCode can explain any file, but its project permissions intentionally deny edits everywhere. This prevents an AI coding assistant from writing your exercises or rewriting workshop infrastructure behind your back — you do the typing.
+
+Tool use and a full agent loop (guardrails, skills, a sandbox concept, persistent runtime state) build on this same retrieval stack in a **separate follow-on session** — they're not part of these four notebooks.
 
 ### Keep Langfuse open in another tab
 
@@ -57,7 +61,7 @@ The four OpenCode workshop skill packages were installed during pre-work and are
 
 ## Case study
 
-You are building an evidence-first financial-research agent over a small official corpus from **TCS, Infosys, and HCLTech**. You will observe why a plain LLM is insufficient, then add parsing, chunking, retrieval, RAG, hybrid search, reranking, tools, an agent loop, guardrails, skills, a sandbox concept, persistent runtime state, and traces.
+You are building a research agent that answers evidence-backed questions about company filings. For this workshop we limit the corpus to three companies — **TCS, Infosys, and HCLTech** — so downloading, parsing, and indexing stays fast enough to do live; the same pipeline works over any set of official filings. You will observe why a plain LLM is insufficient, then add parsing, chunking, retrieval, RAG, hybrid search, and reranking — all with full tracing. Tool use and a full agent loop (guardrails, skills, a sandbox concept, persistent runtime state) build on this same stack in a separate follow-on session.
 
 ## Troubleshooting
 
