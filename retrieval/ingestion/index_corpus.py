@@ -6,8 +6,10 @@ compare it against this one.
 """
 
 import os
+import time
 
 from pinecone import Pinecone
+from pinecone.errors.exceptions import RateLimitError
 
 from config import load_workshop_env
 from retrieval.ingestion.corpus import load_corpus
@@ -25,6 +27,27 @@ def make_pinecone_record(row: dict) -> dict:
         'filename': row['filename'],
         'page': row['page'],
     }
+
+
+def upsert_with_backoff(idx, *, namespace, records, max_retries=6):
+    """Upsert one batch, retrying with backoff if Pinecone's embedding rate limit is hit.
+
+    The free tier caps tokens/minute for the integrated embedding model, which a
+    plain loop over batches can exceed. Pinecone reports how long to wait via
+    `retry_after`; fall back to exponential backoff if that's not provided.
+    """
+    delay = 5
+    for attempt in range(1, max_retries + 1):
+        try:
+            idx.upsert_records(namespace=namespace, records=records)
+            return
+        except RateLimitError as exc:
+            if attempt == max_retries:
+                raise
+            wait = getattr(exc, 'retry_after', None) or delay
+            print(f'  Rate limited by Pinecone, waiting {wait:.0f}s (attempt {attempt}/{max_retries})...')
+            time.sleep(wait)
+            delay = min(delay * 2, 60)
 
 
 def main():
@@ -51,13 +74,18 @@ def main():
 
     idx = pc.index(name=name)
     batch = []
+    indexed = 0
     for row in rows:
         batch.append(make_pinecone_record(row))
         if len(batch) >= 96:
-            idx.upsert_records(namespace=namespace, records=batch)
+            upsert_with_backoff(idx, namespace=namespace, records=batch)
+            indexed += len(batch)
+            print(f'  Indexed {indexed}/{len(rows)} chunks...')
             batch = []
+            time.sleep(2)  # stay comfortably under the free tier's embedding tokens/minute limit
     if batch:
-        idx.upsert_records(namespace=namespace, records=batch)
+        upsert_with_backoff(idx, namespace=namespace, records=batch)
+        indexed += len(batch)
     print(f'Indexed {len(rows)} chunks into {name}/{namespace}')
 
 
