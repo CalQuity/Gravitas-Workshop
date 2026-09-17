@@ -4,7 +4,7 @@ import os
 import re
 
 from langfuse import observe
-from pinecone import Pinecone
+from pinecone import Pinecone, RerankModel
 from rank_bm25 import BM25Okapi
 
 from config import load_workshop_env
@@ -56,6 +56,32 @@ def pinecone_search(query: str, top_k: int = 8, *, filter: dict | None = None):
     return out
 
 
+@observe(name="pinecone-rerank")
+def pinecone_rerank(query: str, hits: list[dict], *, top_k: int = 5) -> list[dict]:
+    """Rerank hits with Pinecone's own hosted reranking model (free-tier eligible).
+
+    Unlike `retrieval/search/ranking.py`'s transparent lexical-overlap scorer
+    (great for understanding *what* reranking does), this calls a real semantic
+    reranker hosted by Pinecone — it reads each hit's text against the query and
+    returns a relevance score, no local scoring logic involved.
+    """
+    load_workshop_env()
+    pc = Pinecone(api_key=os.environ["PINECONE_API_KEY"])
+    result = pc.inference.rerank(
+        model=RerankModel.Pinecone_Rerank_V0,
+        query=query,
+        documents=hits,
+        rank_fields=["text"],
+        top_n=top_k,
+    )
+    reranked = []
+    for match in result.data:
+        item = dict(hits[match.index])
+        item["rerank_score"] = match.score
+        reranked.append(item)
+    return reranked
+
+
 if __name__ == '__main__':
     load_workshop_env()
     sample_query = 'What FY26 revenue growth guidance did Infosys give?'
@@ -75,3 +101,15 @@ if __name__ == '__main__':
     except Exception as exc:
         print(f'\nPinecone search not available yet ({exc}). '
               'Run `uv run python -m retrieval.ingestion.index_corpus` first and confirm PINECONE_API_KEY is set.')
+
+    try:
+        toy_hits = [
+            {'source_id': 'a', 'text': 'Revenue grew 4.2% in FY25.'},
+            {'source_id': 'b', 'text': 'Margins were broadly stable.'},
+            {'source_id': 'c', 'text': 'HCLTech guided FY26 revenue growth of 2-5% in constant currency.'},
+        ]
+        print(f'\nPinecone rerank of a toy shortlist for: {sample_query!r}')
+        for h in pinecone_rerank(sample_query, toy_hits, top_k=3):
+            print('-', h['source_id'], round(h['rerank_score'], 4), h['text'])
+    except Exception as exc:
+        print(f'\nPinecone rerank not available yet ({exc}).')
