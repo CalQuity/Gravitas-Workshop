@@ -1,6 +1,7 @@
 # AI²: Building AI Systems with AI — Workshop
 
 Slide Deck (Part 1): https://docs.google.com/presentation/d/1SJdJUETUOrCCDTdO0eA52aVkAKLf67bs/edit?usp=sharing&ouid=112409108839436100183&rtpof=true&sd=true
+Slide Deck (Part 2): https://docs.google.com/presentation/d/16g3we6rBWkatHswdykJFu5_K1rDZ5KhWi5mzWoU4X0k/edit?usp=sharing
 
 ## 1. Pre-work (do this 2–3 days before the workshop)
 
