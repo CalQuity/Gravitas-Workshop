@@ -1,5 +1,7 @@
 # AI²: Building AI Systems with AI — Workshop
 
+Slide Deck (Part 1): https://docs.google.com/presentation/d/1SJdJUETUOrCCDTdO0eA52aVkAKLf67bs/edit?usp=sharing&ouid=112409108839436100183&rtpof=true&sd=true
+
 ## 1. Pre-work (do this 2–3 days before the workshop)
 
 Follow the numbered guides in `docs/`, in order, starting with `docs/00-before-you-start.md` and including **`docs/03b-workshop-skills.md`**. By the end you should have:
